@@ -11,11 +11,13 @@ body {
 #emoji-container {
     margin: 40px;
     text-align: center;
+    font-size: 60px;
 }
 
 #emoji-container span {
     margin: 10px;
     font-size: 60px;
+    
 }
 
 #push-btn,#unshift-btn {
@@ -24,6 +26,10 @@ body {
 
 #shift-btn,#pop-btn {
     background-color: #bc6c25;
+}
+
+#rutine-btn{
+       background-color: #bc6c25;
 }
 
 h1 {
@@ -59,3 +65,12 @@ button {
     margin:  10px;
 }
 
+
+
+#secret, #job, #friend {
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #606c38;
+}
+ 

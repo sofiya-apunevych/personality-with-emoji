@@ -1,7 +1,13 @@
 const myEmojis = ["👩🏼‍💻", "☕️", "📚", "🏞", "⛸", "🐶", "🐱"]
 
+const emojiContainer = document.getElementById("emoji-container")
+const emojiInput = document.getElementById("emoji-input")
+const pushBtn = document.getElementById("push-btn")
+const unshiftBtn = document.getElementById("unshift-btn")
+const popBtn = document.getElementById("pop-btn")
+const shiftBtn = document.getElementById("shift-btn")
+
 function renderEmojis() {
-    const emojiContainer = document.getElementById("emoji-container")
     emojiContainer.innerHTML = ""
     for (let i = 0; i < myEmojis.length; i++) {
         const emoji = document.createElement('span')
@@ -12,9 +18,7 @@ function renderEmojis() {
 
 renderEmojis()
 
-const pushBtn = document.getElementById("push-btn")
 pushBtn.addEventListener("click", function(){
-    const emojiInput = document.getElementById("emoji-input")
     if (emojiInput.value) {
         myEmojis.push(emojiInput.value)
         emojiInput.value = ""
@@ -22,9 +26,7 @@ pushBtn.addEventListener("click", function(){
     }
 })
 
-const unshiftBtn = document.getElementById("unshift-btn")
 unshiftBtn.addEventListener("click", function(){
-    const emojiInput = document.getElementById("emoji-input")
     if (emojiInput.value) {
         myEmojis.unshift(emojiInput.value)
         emojiInput.value = ""
@@ -32,14 +34,63 @@ unshiftBtn.addEventListener("click", function(){
     }
 })
 
-const popBtn = document.getElementById("pop-btn")
-popBtn.addEventListener("click", function(){
+popBtn.addEventListener("click", function() {
     myEmojis.pop()
     renderEmojis()
 })
 
-const shiftBtn = document.getElementById("shift-btn")
-shiftBtn.addEventListener("click", function(){
+shiftBtn.addEventListener("click", function() {
     myEmojis.shift()
     renderEmojis()
+})
+
+
+
+
+
+let secretEm = document.getElementById("secret")
+let jobEm = document.getElementById("job")
+let friendEm = document.getElementById("friend")
+
+let rutineBtn = document.getElementById("rutine-btn")
+
+let person = {
+    secretEmoji: "👶 👮 🕵️‍♀️",
+    jobEmoji: "👨‍🔧 👩‍🔬",
+    friendEmoji: "👨🏻‍🦱 👩🏻‍🦰",
+};
+
+localStorage.setItem("profile", JSON.stringify(person));
+
+let storageProfileString = localStorage.getItem("profile");
+console.log("String saved in LocalStorage", storageProfileString);
+
+let savedPerson = JSON.parse(storageProfileString);
+console.log("Person object:", savedPerson);
+console.log("Person's name:", savedPerson.friendEmoji);
+
+
+secretEm.addEventListener("click", function(){
+    emojiContainer.innerText = ""
+    emojiContainer.innerText = savedPerson.secretEmoji
+})
+
+jobEm.addEventListener("click", function(){
+    emojiContainer.innerText = ""
+    emojiContainer.innerText = savedPerson.jobEmoji
+})
+
+friendEm.addEventListener("click", function(){
+    emojiContainer.innerText = ""
+   emojiContainer.innerText = savedPerson.friendEmoji 
+})
+
+rutineBtn.addEventListener("click", function(){
+    emojiContainer.innerHTML = ""
+    for (let i = 0; i < myEmojis.length; i++) {
+        const emoji = document.createElement('span')
+        emoji.textContent = myEmojis[i]
+        emojiContainer.append(emoji)
+    }
+    
 })
